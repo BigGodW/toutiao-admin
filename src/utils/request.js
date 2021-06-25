@@ -1,7 +1,8 @@
 const axios = require('axios')
 
 const request = axios.create({
-  baseURL:'http://ttapi/research.itcast.cn'
+  baseURL: 'http://api-toutiao-web.itheima.net'
+  
 })
 
 module.exports = request
