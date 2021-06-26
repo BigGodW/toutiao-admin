@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import request from '@/utils/request.js'
+import {login} from '@/api/user'
 export default {
   data(){
     return {
@@ -41,17 +41,13 @@ export default {
      onLogin(){
        console.log('登录')
        this.loginLoading = true
-       request({
-         method:"post",
-         url:"/mp/v1_0/authorizations",
-    
-         data:this.user
-       }).then(res=>{
-         console.log(res.data)
+       login(this.user).then(res=>{
          this.$message({
            message:'登陆成功',
            type:'success'
          })
+         
+         window.localStorage.setItem('user',JSON.stringify(res.data.data))
          this.$router.push('/')
        }).catch(err=>{
          this.loginLoading = false

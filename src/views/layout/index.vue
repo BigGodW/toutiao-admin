@@ -1,8 +1,12 @@
 <template>
   <el-container id="layout">
-    <el-header>Header</el-header>
+    <el-header>
+      <Header :user="user" @collapse='changeColl'></Header>
+    </el-header>
   <el-container>
-    <el-aside width="200px">Aside</el-aside>
+    <el-aside width="">
+      <Aside :isCollapse='collapse'></Aside>
+    </el-aside>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -12,7 +16,34 @@
 </template>
 
 <script>
+import {getUserProfile} from '@/api/user'
+import Aside from './components/aside.vue'
+import Header from './components/header.vue'
 export default {
+  data(){
+    return{
+      user:{
+      },
+      collapse:false
+    }
+  },
+  components:{
+    Aside,
+    Header
+  },
+  created(){
+    this.getUser()
+  },
+  methods:{
+    getUser(){
+      getUserProfile().then(res=>{
+        this.user = res.data.data
+      })
+    },
+    changeColl(val){
+      this.collapse = val
+    }
+  }
   
 }
 </script>
