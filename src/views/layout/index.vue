@@ -55,7 +55,7 @@ export default {
   background: royalblue;
 }
 .el-aside{
-  background: salmon;
+  background-color:"#002033"
 }
 .el-footer{
   background: gray;

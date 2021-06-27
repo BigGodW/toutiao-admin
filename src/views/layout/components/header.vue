@@ -6,7 +6,8 @@
     </div>
     <el-dropdown>
       <div class="avatar-wrap">
-        <img class="avatar" :src="user.photo" alt="">
+        <img v-if="user.photo" class="avatar" :src="user.photo" alt="">
+        <img v-else class="avatar" src="./logo.png" alt="">
         <span>{{user.name}}</span>
         <i class="el-icon-arrow-down el-icon--right"></i>
       </div>
