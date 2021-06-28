@@ -9,9 +9,16 @@ export const login = (data)=>{
 }
 
 export const getUserProfile = ()=>{
-    const user = JSON.parse(window.localStorage.getItem('user'))
+    //const user = JSON.parse(window.localStorage.getItem('user'))
     return request({
         method:"get",
         url:"/mp/v1_0/user/profile"
+    })
+}
+export const changePhoto = (data)=>{
+    return request({
+        method:'patch',
+        url:'/mp/v1_0/user/photo',
+        data
     })
 }
